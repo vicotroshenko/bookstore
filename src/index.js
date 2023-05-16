@@ -222,12 +222,12 @@ function onModalWindowInform(response) {
 		}
 	}
 }
-
+let id = '';
 function onOpenModal(event) {
 	window.addEventListener('keydown', onEscKeyPress);
 	refsModal.backdrop.classList.add('show-modal');
 	
-	const id = this.id;
+	id = this.id;
 	makeMarkupOnModal(id);
 	checkLocalData(id);
 };
@@ -312,12 +312,13 @@ function makeMarkupOnModal(id){
 const KEY_ADD_BOOKS = "shoplist";
 
 refs.btnAddShopList.addEventListener('click', makeLocalData);
+
 function makeLocalData(event) {
 	let booksAddShopList = [];
 	let bookArray = booksArrayTop;
 	refs.btnAddShopList.textContent ='remove from the shopping list';
 	for(const book of bookArray){
-		if(book._id === event.view.id){
+		if(book._id === id){
 			if(getLocalData(KEY_ADD_BOOKS) !== null){
 				const parsedBooks = getLocalData(KEY_ADD_BOOKS);
 				if(refs.btnAddShopList.hasAttribute("data-buy") === false){
@@ -326,7 +327,7 @@ function makeLocalData(event) {
 					return refs.btnAddShopList.setAttribute("data-buy", "addlist");
 				} 
 				if(refs.btnAddShopList.hasAttribute("data-buy") === true) {
-					const newParsedBooks = parsedBooks.filter(element => element._id !== event.view.id);
+					const newParsedBooks = parsedBooks.filter(element => element._id !== id);
 					setLocalData(KEY_ADD_BOOKS, newParsedBooks)
 					refs.btnAddShopList.removeAttribute("data-buy")
 					refs.btnAddShopList.textContent ='add to shopping list';
@@ -361,15 +362,19 @@ export {setLocalData, getLocalData};
 
 function checkLocalData(id) {
 	let parsedBooks = getLocalData(KEY_ADD_BOOKS);
+	if(parsedBooks === null){
+		return;
+	}
+	console.log(parsedBooks)
 	for(const books of parsedBooks){
+		if(!Object.values(books).includes(id)){
+			refs.btnAddShopList.removeAttribute("data-buy")
+			return refs.btnAddShopList.textContent ='add to shopping list';
+		} 
 		if(Object.values(books).includes(id)){
 			refs.btnAddShopList.setAttribute("data-buy", "addlist");
 			return refs.btnAddShopList.textContent ='remove from the shopping list';
 		}
-		if(!Object.values(books).includes(id)){
-			refs.btnAddShopList.removeAttribute("data-buy")
-			refs.btnAddShopList.textContent ='add to shopping list';
-		} 
 	}
 }
 // changed site theme
