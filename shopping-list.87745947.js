@@ -1,0 +1,2 @@
+!function(){var e=document.querySelectorAll('[data-action="open-modal-enter"]'),n=document.querySelector('[data-action="close-modal-enter"]'),t=document.querySelector(".js-backdrop-enter");function o(e){window.addEventListener("keydown",d),t.classList.add("show-modal-enter")}function c(){window.removeEventListener("keydown",d),t.classList.remove("show-modal-enter")}function d(e){"Escape"===e.code&&c()}e.forEach((function(e){return e.addEventListener("click",o)})),n.addEventListener("click",c)}();
+//# sourceMappingURL=shopping-list.87745947.js.map

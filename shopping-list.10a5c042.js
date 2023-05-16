@@ -1,0 +1,2 @@
+const e=document.querySelectorAll('[data-action="open-modal-enter"]'),n=document.querySelector('[data-action="close-modal-enter"]'),o=document.querySelector(".js-backdrop-enter");function t(e){window.addEventListener("keydown",d),o.classList.add("show-modal-enter")}function c(){window.removeEventListener("keydown",d),o.classList.remove("show-modal-enter")}function d(e){"Escape"===e.code&&c()}e.forEach((e=>e.addEventListener("click",t))),n.addEventListener("click",c);
+//# sourceMappingURL=shopping-list.10a5c042.js.map
