@@ -227,8 +227,7 @@ function onOpenModal(event) {
 	window.addEventListener('keydown', onEscKeyPress);
 	refsModal.backdrop.classList.add('show-modal');
 	
-	const id = event.view.id;
-
+	const id = this.id;
 	makeMarkupOnModal(id);
 	checkLocalData(id);
 };
