@@ -361,7 +361,7 @@ function getLocalData(list){
 export {setLocalData, getLocalData};
 
 function checkLocalData(id) {
-	const parsedBooks = getLocalData(KEY_ADD_BOOKS);
+	let parsedBooks = getLocalData(KEY_ADD_BOOKS);
 	for(const books of parsedBooks){
 		if(Object.values(books).includes(id)){
 			refs.btnAddShopList.setAttribute("data-buy", "addlist");
