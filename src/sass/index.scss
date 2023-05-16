@@ -156,6 +156,11 @@ body {
 		background-color: $main-dark-color;
 		color: $bgc-header;
 		border: 2px solid $bgc-header;
+		.button.close{
+			&:hover {
+				box-shadow: rgba(255, 255, 255, 0.16) 0px 3px 6px, rgba(255, 255, 255, 0.23) 0px 3px 6px;
+			}
+		}
 		svg {
 			fill: $bgc-header;
 		}
