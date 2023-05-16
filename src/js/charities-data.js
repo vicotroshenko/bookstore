@@ -68,7 +68,6 @@ let counter = 0;
 scrollBtnRef.addEventListener('click', ()=> {
   if(counter === 0) {
     offset+=Math.floor(sliderBox.offsetHeight/6);
-    console.log(offset)
     charitiesContainerRef.style.top = -offset + 'px';
   } else {
     offset-=Math.floor(sliderBox.offsetHeight/6);

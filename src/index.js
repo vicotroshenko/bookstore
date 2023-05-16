@@ -227,7 +227,8 @@ function onOpenModal(event) {
 	window.addEventListener('keydown', onEscKeyPress);
 	refsModal.backdrop.classList.add('show-modal');
 	
-	id = this.id;
+	id = event.view.id;
+
 	makeMarkupOnModal(id);
 	checkLocalData(id);
 };
@@ -380,7 +381,7 @@ refs.btnCnangeThemeRef.addEventListener('change', changeTheme);
 const KEY_THEME ='themeStatus';
 let checkStatus = '';
 function changeTheme(event) {
-	if (this.checked) {
+	if (event.target.checked) {
 		checkStatus =true;
 		bodyRef.classList.add("dark-theme")
   } else {
