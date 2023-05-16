@@ -1,0 +1,336 @@
+@import "root.scss";
+@import "header.scss";
+
+
+
+.flex-container-shopping {
+	display: flex;
+	margin: 0 auto;
+	padding: 40px 20px 0 20px;
+	background: $grey-second-bg-color;
+
+	@media screen and (min-width: $tablet) {
+		padding: 40px 32px 0 32px;
+	}
+
+	@media screen and (min-width: $desktop) {
+		max-width: 1440px;
+		padding: 40px 24px 0 24px;
+	}
+
+	.charities {
+		display: none;
+
+		@media screen and (min-width: $desktop) {
+			max-width: 356px;
+			display: block;
+		}
+
+		.container {
+			margin: 0;
+		}
+	}
+
+	.shopping-list {
+		width: 100%;
+		.container-shop {
+			width: 100%;
+			height: 92vh;
+			@media screen and (min-width: $tablet) {
+				margin: 0 auto;
+				max-width: $tablet;
+			}
+			@media screen and (min-width: $desktop) {
+				max-width: 1036px;
+				padding-left: 40px;
+			}
+			.screen-saver {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				.text-saver {
+					max-width: 244px;
+					margin-top: 120px;
+					font-size: 14px;
+					line-height: 1.29;
+					text-align: center;
+					letter-spacing: -0.02em;
+					color: $categories-list;
+					@media screen and (min-width: $tablet){
+						max-width: 349px;
+						font-size: 18px;
+						line-height: 1.33;
+					}
+				}
+				.pile-books{
+					max-width: 265px;
+					width: 100%;
+					max-height: 198px;
+					@media screen and (min-width: $tablet){
+						max-width: 322px;
+						max-height: 241px;
+					}
+				}
+			}
+		}
+		.container-list-shop {
+			width: 100%;
+			@media screen and (min-width: $desktop) {
+				max-width: 1036px;
+			}
+			.item {
+				position: relative;
+				width: 100%;
+				max-height: 170px;
+				height: 100%;
+				display: flex;
+				padding: 14px;
+				border: 2px solid $hover-color;
+				border-radius: 16px;
+				background-color: $bgc-header;
+				
+				@media screen and(min-width: $tablet){
+					max-height: 213px;
+					padding: 24px;
+				}
+				&:first-child{
+					margin-top: 40px;
+				}
+				&:first-child ~ .item {
+					margin-top: 20px;
+				}
+				&:hover .book-cover{
+					transform: scale(1.1);
+				}
+				&:hover .list{
+					transform: scale(1.1);
+				}
+			}
+			.book-cover {
+				width: 100%;
+				max-width: 100px;
+				height: 142px;
+				transition: transform 250ms linear;
+				@media screen and (min-width: $tablet){
+					max-width: 116px;
+					height: 165px;
+				}
+			}
+			.book-describe {
+				padding-left: 14px;
+				width: 100%;
+				max-height: 142px;
+				height: 100%;
+				overflow: hidden;
+				@media screen and(min-width: $tablet){
+					padding-left: 24px;
+					overflow: visible;
+				}
+				div {
+					display: flex;
+					justify-content: space-between;
+					align-items: flex-end;
+					margin-top: auto;
+				}
+				.subject {
+					font-weight: 700;
+					font-size: 16px;
+					line-height: 1.12;
+					max-width: 144px;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+				}
+				.category {
+					display: block;
+					margin-top: 4px;
+					font-size: 12px;
+					color: $grey-text-color;
+					line-height: 1.16;
+					max-width: 144px;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+				}
+				.describe {
+					overflow: hidden;
+					text-overflow: ellipsis;
+					height: 68px;
+					margin-top: 8px;
+					margin-bottom: 14px;
+					@media screen and(min-width: $tablet){
+						height: 53px;
+						margin-top: 14px;
+						margin-bottom: 32px;
+					}
+				}
+				.author {
+					font-size: 12px;
+					color: $grey-text-color;
+					font-style: italic;
+				}
+				.list {
+					display: flex;
+					column-gap: 8px;
+					flex-wrap: wrap;
+					align-items: center;
+					justify-content: center;
+					transition: transform 250ms linear;
+					@media screen and (min-width: $tablet){
+						column-gap: 16px;
+					}
+					
+				}
+				.book-link {
+					filter: saturate(0%);
+					
+					&:first-child {
+						width: 32px;
+						height: 11px;
+						@media screen and (min-width: $tablet){
+							width: 48px;
+							height: 15px;
+						}
+					}
+					&:nth-child(2n) {
+						width: 16px;
+						height: 16px;
+						@media screen and (min-width: $tablet){
+							width: 28px;
+							height: 27px;
+						}
+					}
+					&:last-child {
+						width: 16px;
+						height: 16px;
+						@media screen and (min-width: $tablet){
+							width: 32px;
+							height: 33px;
+						}
+						.img{
+							object-fit: fill;
+						}
+					}
+					&:hover {
+						border-radius: 4px;
+						filter: none;
+					}
+				}
+				
+			}
+			
+		}
+	}
+}
+
+
+
+
+.button.close {
+	position: absolute;
+	top: 14px;
+	right: 14px;
+	background-color: $hover-color;
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+	border: none;
+	padding: 5px;
+	@media screen and (min-width: $tablet){
+		width: 34px;
+		height: 34px;
+	}
+	&:hover {
+		cursor: pointer;
+		outline: 2px solid $btn-active
+	}
+}
+#pagination {
+	margin-top: 20px;
+	@media screen and (min-width: $tablet){
+		margin-top: 40px;
+	}
+	.tui-page-btn.tui-own-styles {
+		width: 38px;
+		height: 38px;
+		border: 1px solid $pagination-btn-color;
+		border-radius: 50%;
+		font-weight: 700;
+		font-size: 18px;
+		line-height: 1.22;
+		color: $pagination-btn-color;
+		&:nth-child(4){
+			margin-left: 8px;
+			@media screen and (min-width: $tablet){
+				margin-left: 10px;
+			}
+		}	
+		&:hover{
+			border: 1px solid $grey-text-color;
+			filter: contrast(120%)
+		}
+		&:nth-child(5){
+			margin-left: 8px;
+			@media screen and (min-width: $tablet){
+				margin-left: 10px;
+			}
+		}	
+		@media screen and (min-width: $tablet){
+			width: 44px;
+			height: 44px;
+			padding: 10px;
+		}
+	}
+	.tui-first.tui-own-styles{
+		background-color: $black-color;
+		color: $bgc-header;
+		padding: 6px;
+		.tui-ico-first {
+			background-position: -13px 0;
+		}
+		@media screen and (min-width: $tablet){
+			padding: 8px;
+		}
+	}
+	.tui-prev.tui-own-styles{
+		margin-left: 5px;
+		margin-right: 14px;
+		background-color: $black-color;
+		color: $bgc-header;
+		padding: 6px;
+		
+		@media screen and (min-width: $tablet){
+			margin-right: 24px;
+			margin-left: 8px;
+			padding: 8px;
+		}
+		.tui-ico-prev {
+			background-position: -26px -12px;
+		}
+	}
+	.tui-next.tui-own-styles{
+		margin-left: 14px;
+		margin-right: 5px;
+		background-color: $btn-active;
+		padding: 6px;
+		@media screen and (min-width: $tablet){
+			margin-left: 24px;
+			margin-right: 8px;
+			padding: 8px;
+		}
+	}
+	.tui-next-is-ellip.tui-own-styles{
+		padding: 6px;
+	}
+	.tui-last.tui-own-styles{
+		padding: 6px;
+		background-color: $btn-active;
+		@media screen and (min-width: $tablet){
+			padding: 8px;
+		}
+	}
+	.tui-is-selected.tui-own-styles{
+		background-color: $black-color;
+		color: $bgc-header;
+	}
+}

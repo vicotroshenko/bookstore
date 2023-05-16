@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../node_modules/modern-normalize/modern-normalize.css">
+	<link rel="stylesheet" href="./sass/shopping-list.scss">
+	<link rel="stylesheet" href="./sass/index.scss">
+
+	<title>Bookshelf</title>
+</head>
+
+<body>
+	<header class="header">
+		<div class="container">
+			<div class="header-wrapper">
+				<!-- logo on header -->
+				<div class="container-logo">
+					<a href="index.html" class="link">
+						<svg class="logo">
+							<use href="./images/icons.svg#icon-logo"></use>
+						</svg>
+						<svg class="logo-name">
+							<use href="./images/icons.svg#icon-bookshelf"></use>
+						</svg>
+					</a>
+				</div>
+				<!-- nav menu is showing on tablet/desktop -->
+				<nav class="site-nav tablet-show">
+					<a href="index.html" class="link">HOME</a>
+					<a href="shopping-list.html" class="link shopping active">SHOPPING LIST
+						<svg class="shopping-icon">
+							<use href="./images/icons.svg#icon-bag"></use>
+						</svg>
+					</a>
+				</nav>
+				<!-- buttons for mobile menu and chenge theme -->
+				<div class="container-buttons js-container-buttons">
+					<label class="switch">
+						<input class="js-theme-checked" type="checkbox">
+						<span class="slider round"></span>
+					</label>
+	<!-- menu desktop and tablet -->
+					<div class="dropdown hidden">
+						<button  type="button" class="dropbtn user-inform">
+								<img src="./images/user-stephen.jpg" class="img" alt="user Stephen">
+								<span>Stephen</span>
+								<svg>
+									<use href="./images/icons.svg#icon-triangle"></use>
+								</svg>
+	
+						</button>
+						<div id="myDropdown" class="dropdown-content">
+							<button type="button" class="button primery logout">
+								<span>Log out</span>
+								<svg class="logout-arrow">
+									<use href="./images/icons.svg#icon-arrow"></use>
+								</svg>
+							</button>
+						</div>
+					</div>
+	
+					<button type="button" class="button primery singup-tablet" data-action="open-modal-enter">
+						<span>Log in</span>
+						<svg class="logout-arrow">
+							<use href="./images/icons.svg#icon-arrow"></use>
+						</svg>
+					</button>
+					<button class="button secondary button-open js-open-menu" aria-expanded="false">
+						<svg class="mobile-menu is-open" aria-label="Переключатель мобільного вікна">
+							<use href="./images/icons.svg#icon-mobile-menu-open"></use>
+						</svg>
+					</button>
+					<button class="button secondary button-close js-close-menu">
+						<svg class="mobile-menu ">
+							<use href="./images/icons.svg#icon-mobile-close"></use>
+						</svg>
+					</button>
+					
+				</div>
+			</div>
+	
+	
+			<!-- mobile menu ================================-->
+			<div class="container-menu js-menu-container">
+				<div class="container-mobile-inner">
+					<div class="user-inform">
+						<div>
+							<img src="./images/user-stephen.jpg" class="img" alt="user Stephen">
+						</div>
+						<span>Stephen</span>
+					</div>
+					<nav class="site-nav">
+						<div class="overlay">
+							<a href="index.html" class="link">HOME</a>
+							<a href="shopping-list.html" class="link shopping  active">SHOPPING LIST
+								<svg class="shopping-icon">
+									<use href="./images/icons.svg#icon-bag"></use>
+								</svg>
+							</a>
+						</div>
+					</nav>
+					<button type="button" class="button primery hidden">
+						<span>Log out</span>
+						<svg class="logout-arrow">
+							<use href="./images/icons.svg#icon-arrow"></use>
+						</svg>
+					</button>
+					<button type="button" class="button primery singup" data-action="open-modal-enter">
+						<span>Log in</span>
+						<svg class="logout-arrow">
+							<use href="./images/icons.svg#icon-arrow"></use>
+						</svg>
+					</button>
+				</div>
+			</div>
+		</div>
+	
+	</header>
+	<main>
+		<div class="flex-container-shopping">
+			<include src="./partials/charities.html"></include>
+			<section class="shopping-list">
+				<div class="container-shop">
+					<h1 class="title">Shopping List</h1>
+					<div class="screen-saver js-screen-saver">
+						<p class="text-saver dark">This page is empty, add some books and proceed to order.</p>
+						<div class="pile-books">
+							<img class="img" 
+							srcset = "images/pilebooks.png 1x, images/pile-books-2x.png 2x"
+							src="https://github.com/vicotroshenko/bookstore/blob/main/src/images/pilebooks.png?raw=true" alt="screen saver">
+						</div>
+					</div>
+					<ul class="list js-container-list-shop container-list-shop">
+						
+					</ul>
+					<div class="tui-pagination" id="pagination"></div>
+				</div>
+			</section>
+		</div>
+		<include src="./partials/modal-enter.html"></include>
+	</main>
+	<script src="./shopping-list.js" type="module"></script>
+	<script src="./js/mobile-menu.js" type="module"></script>
+	<script src="./js/charities-data.js" type="module"></script>
+	<script src="./js/firebase.js" type="module"></script>
+	<script src="./js/modal-enter.js" type="module"></script>
+</body>
+
+</html>

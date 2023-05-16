@@ -1,0 +1,152 @@
+@import "root.scss";
+
+.backdrop {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 300;
+	background-color: rgba(17, 17, 17, 0.4);
+	display: none;
+	opacity: 0;
+    visibility: hidden;
+	.modal {
+		position: relative;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background-color: $bgc-header;
+		max-width: 335px;
+		max-height: 762px;
+		height: 100%;
+		padding: 40px 24px;
+		border: 2px solid #111111;
+		border-radius: 18px;
+		z-index: 12;
+    overflow-y: auto;
+		@media screen and (min-width: $tablet){
+			max-width: 579px;
+			max-height: 465px;
+			padding: 40px;
+		}
+	}
+	&.show-modal {
+		display: block;
+		overflow-y: visible;
+		opacity: 1;
+		visibility: visible;
+	}
+	.modal-container {
+		.button {
+			&.close {
+				position: absolute;
+				top: 12;
+				right: 12;
+				width: 24px;
+				height: 24px;
+				background-color: transparent;
+				border: none;
+				@media screen and (min-width: $tablet){
+					width: 28px;
+					height: 28px;
+					top: 20;
+					right: 40;
+				}
+				svg {
+					width: 100%;
+					height: 100%;
+				}
+			}
+			&.order{
+				max-width: none;
+				width: 100%;
+				margin-top: 40px;
+				text-transform: uppercase;
+				background-color: transparent;
+				&:hover{
+					cursor: pointer;
+					background-color: $hover-color;
+					color: $bgc-header;	
+				}
+			}
+		}
+
+
+		.modal-wrapper {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: flex-start;
+			@media screen and(min-width: $tablet){
+				flex-direction: row;
+			}
+			.book-cover {
+				max-width: 287pxpx;
+				width: 100%;
+				height: 408pxpx;
+				@media screen and(min-width: $tablet){
+					max-width: 192px;
+					height: 281px;
+				}
+			}
+		}
+		.book-describe {
+			@media screen and (min-width: $tablet){
+				padding-left: 24px;
+				max-width: 279px;
+			}
+			.list {
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+				filter: saturate(0%);
+			}
+
+			
+			.subject {
+				margin-top: 14px;
+				font-size: 24px;
+				line-height: 1.16;
+				font-weight: 700;
+				@media screen and (min-width: $tablet){
+					margin-top: 0;
+				}
+			}
+			.author {
+				margin-top: 4px;
+				color: $grey-text-color;
+				font-size: 12px;
+				line-height: 1.12;
+				letter-spacing: -0.04em;
+				@media screen and(min-width: $tablet){
+					margin-top: 8px;
+				}
+			}
+			.describe {
+				margin-top: 18px;
+				max-height: 70px;
+				@media screen and(min-width: $tablet){
+					margin-top: 20px;
+				}
+			}
+			.book-link {
+				margin-top: 20px;
+				&:first-child {
+					width: 62px;
+					height: 19px;
+				}
+				&:nth-child(2n) {
+					margin-left: 20px;
+					width: 33px;
+					height: 32px;
+				}
+				&:last-child {
+					margin-left: 20px;
+					width: 38px;
+					height: 36px;
+				}
+			}
+		}
+	}
+}

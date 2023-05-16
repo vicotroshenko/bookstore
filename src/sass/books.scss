@@ -1,0 +1,167 @@
+@import "root.scss";
+
+.books {
+	.container{
+		position: relative;
+		@media screen and (min-width: $tablet){
+			padding: 0 12px 0 28px;
+		}
+		.title {
+			margin-bottom: 40px;
+		}
+		.button {
+			font-size: 14px;
+			padding: 10px 22px;
+			border: 2px solid $hover-color;
+			background-color: transparent;
+			transition: background-color 250ms linear, color 250ms linear;
+			&:hover{
+				cursor: pointer;
+				background-color: $hover-color;
+				color: $bgc-header;	
+			}
+			&:focus{
+				cursor: pointer;
+				background-color: $hover-color;
+				color: $bgc-header;	
+			}
+		}
+		
+		.list-books{
+			margin: 0 auto;
+			&.all-books-show {
+				display: flex;
+				justify-content: flex-start;
+				flex-wrap: wrap;
+				row-gap: 40px;
+			}
+			.category-name {
+				display: block;
+				margin-bottom: 18px;
+				color: $grey-text-color;
+				letter-spacing: 0.03em;
+				text-transform: uppercase;
+			}
+			.subject {
+				margin-top: 14px;
+			}
+			.author {
+				margin-top: 4px;
+				color: $grey-text-color;
+				font-size: 12px;
+				line-height: 1.12;
+				letter-spacing: -0.04em;
+				font-style: italic;
+			}
+			.primery-btn-wrapper {
+				display: flex;
+				justify-content: flex-end;
+				padding-top: 8px;
+				padding-bottom: 40px;
+				@media screen and (min-width: $tablet){
+					padding-top: 20px;
+				}
+				@media screen and (min-width: $desktop){
+					padding-top: 32px;
+				}
+			}
+			.book-info {
+				position: relative;
+				width: 100%;
+				overflow: hidden;
+				@media screen and (min-width: $tablet){
+					padding: 10px 12px 10px 12px;
+				}
+				&:hover {
+					cursor: pointer;
+					border-radius: 10px;
+					box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+				}
+				&:focus {
+					cursor: pointer;
+					border-radius: 10px;
+					box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+				}		
+				&:hover .quick-view {
+					transform: translateY(0);
+				}
+				&:focus .quick-view {
+					transform: translateY(0);
+				}
+				@media screen and (min-width: $tablet){
+					max-width: 218px;
+				}
+				@media screen and (min-width: $desktop){
+					max-width: 180px;
+				}
+				.subject {
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+				}
+				.book-cover {
+					position: relative;
+					max-width: 335px;
+					width: 100%;
+					height: 485px;
+					overflow: hidden;
+					border-radius: 8px;
+					@media screen and (min-width: $tablet){
+						max-width: 218px;
+						height: 316px;
+					}
+					@media screen and (min-width: $desktop){
+						max-width: 180px;
+						height: 256px;
+					}
+					
+				}
+			}
+		}
+	}
+	
+	
+}
+.book-cover{
+	z-index: 2;
+	.quick-view{
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 70px;
+		text-transform: uppercase;
+		display: flex;
+    align-items: center;
+    justify-content: center;
+		background-color: rgba(234, 198, 69, 0.9);
+		transform: translateY(71px);
+		transition: transform 250ms linear;
+	}
+	
+	
+}
+.list-books-wrapper {
+	display: flex;
+	justify-content: center;
+	row-gap: 20px;
+	.item {
+		width: 100%;
+		display: none;
+	}
+	.item:nth-child(-n + 1){
+		@media screen and (max-width: $tablet){
+			display: block;
+		}
+	}
+	.item:nth-child(-n + 3){
+		@media screen and (min-width: $tablet){
+			display: block;
+		}
+	}
+	.item:nth-child(-n + 5){
+		@media screen and (min-width: $desktop){
+			display: block;
+		}
+	}
+}

@@ -1,0 +1,230 @@
+@import "header.scss";
+@import "root.scss";
+@import "categories.scss";
+@import "charities.scss";
+@import "books.scss";
+@import "modal.scss";
+@import "modal-enter.scss";
+
+
+body {
+	font-family: 'DM Sans', sans-serif;
+	box-sizing: border-box;
+	font-size: 14px;
+	line-height: 1.29;
+	letter-spacing: -0.04em;
+
+}
+
+.list {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+}
+.img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.container {
+	max-width: $mobile;
+	width: 100%;
+	margin: 0 auto;
+	// outline: 3px solid red;
+	padding: 0 20px 0 20px;
+	@media screen and (min-width: $tablet){
+		max-width: $tablet;
+		padding: 0;
+	}
+	@media screen and (min-width: $desktop){
+		max-width: $desktop;
+	}
+}
+
+.button {
+	&.primery {
+		display: block;
+		border-radius: 40px;
+		font-weight: 700;
+		border: 2px solid $hover-color;
+		&:hover{
+			cursor: pointer;
+		}
+	}
+	&.secondary {
+		border: none;
+		background-color: transparent;
+		padding: 0;
+		&:hover {
+			cursor: pointer;
+		}
+	}
+}
+.link {
+	display: block;
+	text-decoration: none;
+	color: $black-color;
+	margin: 0;
+  padding: 0;
+}
+.title {
+	margin: 0;
+	font-size: 32px;
+	line-height: 1.19;
+	font-weight: 700;
+	@media screen and (min-width: $tablet){
+		font-size: 48px;
+		line-height: 1.09;
+	}
+}
+.subtitle {
+	font-weight: 700;
+	font-size: 28px;
+	line-height: 1.14;
+}
+.subject {
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+.flex-box-inner {
+	@media screen and (min-width: $tablet){
+		max-width: 768px;
+		display: flex;
+		column-gap: 32px;
+		padding: 40px 32px 100px 32px;
+		margin: 0 auto;
+	}
+	@media screen and (min-width: $desktop){
+		max-width: 356px;
+		width: 100%;
+		display: block;
+		padding: 0;
+	}
+}
+.flex-container {
+	@media screen and (min-width: $desktop){
+		display: flex;
+		padding: 40px 24px 24px 24px;
+		max-width: 1440px;
+		margin: 0 auto;
+	}
+}
+.hidden{
+	display: none;
+}
+
+.dark-theme {
+	background-color: $main-dark-color;
+	color: $bgc-header;
+	.header-wrapper{
+		background-color: $black-color;
+		color: $bgc-header;
+		border: 1px solid $bgc-header;
+		.logo-name {
+			fill: $bgc-header;
+		}
+		.link {
+			color: $bgc-header;
+			.shopping-icon {
+				fill: $bgc-header;
+			}
+		}
+
+		.mobile-menu{
+			fill: $bgc-header;
+		}
+	}
+	.container-menu {
+		.button {
+			span{
+				color: $black-color;
+			}
+			
+		}
+	}
+	.categories-books {
+		color: $categories-list-white;
+	}
+	.button {
+		color: $bgc-header;
+	}
+	.modal {
+		background-color: $main-dark-color;
+		color: $bgc-header;
+		border: 2px solid $bgc-header;
+		svg {
+			fill: $bgc-header;
+		}
+		.book-describe {
+			.list{
+				.book-link:first-child {
+					filter: invert(100%)
+				}
+			}
+		}
+	}
+	.modal-enter {
+		background-color: $main-dark-color;
+		color: $dark-them-text-color;
+		.button.close{
+			fill: $dark-them-text-color;
+			&:hover {
+				box-shadow: rgba(255, 255, 255, 0.16) 0px 3px 6px, rgba(255, 255, 255, 0.23) 0px 3px 6px;
+			}
+		}
+		.form-label {
+			.form-input {
+				background-color: $main-dark-color;
+				border: 2px solid $bgc-header;
+				color: $dark-them-text-color;
+			}
+			.label-name {
+				background-color: $main-dark-color;
+			}
+			.icon-box {
+				fill: $dark-them-text-color;
+			}
+		}
+		
+		.button.primery {
+			background-color: $dark-them-text-color;
+			color: $main-dark-color;
+		}
+	}
+	.flex-container-shopping  {
+		background-color: $main-dark-color;
+		.screen-saver {
+			.text-saver.dark {
+				color: $dark-them-text-color;
+			}
+		}
+		.container-list-shop{
+			.item{
+				background-color: $black-color;
+				.book-describe{
+					.list{
+						.book-link:first-child{
+							filter: invert(100%) Grayscale(100%);
+						}
+						
+					}
+				}
+			}
+		}
+	}
+	.books {
+		.book-info.modal-open {
+			&:hover {
+				box-shadow: rgba(255, 255, 255, 0.25) 0px 2px 5px -1px, rgba(255, 255, 255, 0.3) 0px 1px 3px -1px;
+			}
+			&:focus {
+				box-shadow: rgba(255, 255, 255, 0.25) 0px 2px 5px -1px, rgba(255, 255, 255, 0.3) 0px 1px 3px -1px;
+			}	
+		}
+	}
+
+}
