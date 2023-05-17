@@ -2,12 +2,13 @@
 @import "header.scss";
 
 
-
+body {
+	background: $grey-second-bg-color;
+}
 .flex-container-shopping {
 	display: flex;
 	margin: 0 auto;
 	padding: 40px 20px 0 20px;
-	background: $grey-second-bg-color;
 
 	@media screen and (min-width: $tablet) {
 		padding: 40px 32px 0 32px;

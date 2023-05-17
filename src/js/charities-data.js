@@ -67,10 +67,11 @@ let offset = 0;
 let counter = 0;
 scrollBtnRef.addEventListener('click', ()=> {
   if(counter === 0) {
-    offset+=Math.floor(sliderBox.offsetHeight/6);
+    console.log(sliderBox.offsetHeight)
+    offset+=32;
     charitiesContainerRef.style.top = -offset + 'px';
   } else {
-    offset-=Math.floor(sliderBox.offsetHeight/6);
+    offset-=32;
     charitiesContainerRef.style.top = -offset + 'px';
   }
   if(offset === 0){
@@ -79,7 +80,7 @@ scrollBtnRef.addEventListener('click', ()=> {
     arrowScrollBtnRef.style.transform = "rotate(0turn)";
     arrowScrollBtnRef.style.fill = "#4F2EE8"
   }
-  if(offset >= charitiesData.length*32) {
+  if(offset >= 434 - sliderBox.offsetHeight) {
     counter = 1;
     scrollBtnRef.style.backgroundColor = "#4F2EE8";
     arrowScrollBtnRef.style.transform = "rotate(0.5turn)";

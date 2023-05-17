@@ -362,20 +362,16 @@ export {setLocalData, getLocalData};
 
 function checkLocalData(id) {
 	let parsedBooks = getLocalData(KEY_ADD_BOOKS);
-	if(parsedBooks === null){
+	const localStoreBookStatus = parsedBooks.find(book => book._id === id)
+	if(localStoreBookStatus){
+		refs.btnAddShopList.setAttribute("data-buy", "addlist");
+		refs.btnAddShopList.textContent ='remove from the shopping list';
 		return;
-	}
-	console.log(parsedBooks)
-	for(const books of parsedBooks){
-		if(!Object.values(books).includes(id)){
-			refs.btnAddShopList.removeAttribute("data-buy")
-			return refs.btnAddShopList.textContent ='add to shopping list';
-		} 
-		if(Object.values(books).includes(id)){
-			refs.btnAddShopList.setAttribute("data-buy", "addlist");
-			return refs.btnAddShopList.textContent ='remove from the shopping list';
-		}
-	}
+	} else {
+		refs.btnAddShopList.removeAttribute("data-buy")
+		refs.btnAddShopList.textContent ='add to shopping list';
+		return;
+	} 
 }
 // changed site theme
 const bodyRef = document.querySelector('body');
