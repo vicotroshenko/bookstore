@@ -8,14 +8,12 @@
 	left: 0;
 	z-index: 300;
 	background-color: rgba(17, 17, 17, 0.4);
-	display: none;
+	visibility: hidden;
 	opacity: 0;
-    visibility: hidden;
 	.modal {
 		position: relative;
 		top: 50%;
 		left: 50%;
-		transform: translate(-50%, -50%);
 		background-color: $bgc-header;
 		max-width: 335px;
 		max-height: 762px;
@@ -23,8 +21,10 @@
 		padding: 40px 24px;
 		border: 2px solid #111111;
 		border-radius: 18px;
-		z-index: 12;
-    overflow-y: auto;
+		z-index: 2;
+		overflow-y: auto;
+		transform: translate(40%, -50%) scale(0.7);
+		transition: transform 0.25s linear;
 		@media screen and (min-width: $tablet){
 			max-width: 579px;
 			max-height: 465px;
@@ -32,10 +32,12 @@
 		}
 	}
 	&.show-modal {
-		display: block;
-		overflow-y: visible;
-		opacity: 1;
 		visibility: visible;
+		opacity: 1;
+		.modal{
+			
+			transform: translate(-50%, -50%) scale(1);
+		}
 	}
 	.modal-container {
 		.button {
