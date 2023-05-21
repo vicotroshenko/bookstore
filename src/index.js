@@ -29,8 +29,8 @@ function stopPreloader() {
 
 async function getData() {
   try {
-		startPreloader()
     const response = await axios.get(urlCategories);
+		startPreloader()
 		makeCategories(response);
   } catch (error) {
     console.error(error);
@@ -53,18 +53,19 @@ function getName(event) {
 	let urlCategory = '';
 	if(categoryName === 'top-books') {
 		urlCategory=urlBooks+categoryName;
+		startPreloader();
 		getBooks(urlCategory)
 		.then(response => {
-			startPreloader()
+			
 			markupTopBooks(response);
 			onModalWindowInform(response);
 		})
 		.catch(error => console.log(error));
 	} else {
 		urlCategory=urlBooks+'category?category='+categoryName;
+		startPreloader();
 		getBooks(urlCategory)
 		.then(response => {
-			startPreloader()
 			setAllBooksAfterClick(response);
 			onModalWindowInform(response);
 		})
@@ -72,10 +73,12 @@ function getName(event) {
 	}
 	setStatusActive(categoryName);
 };
+
 // goten name give us necessary books
 async function getBooks(url) {
   try {
     const response = await axios.get(url);
+		startPreloader()
 		return response;
   } catch (error) {
     console.error(error);
@@ -93,9 +96,8 @@ refs.booksBoxRef = document.querySelector('.js-list-books');
 
 
 function markupTopBooks(response) {
-	refs.booksBoxRef.innerHTML = '<div class="books-box js-preloader"><div class="js-loader"></div></div>';
+	refs.booksBoxRef.innerHTML = '';
 	refs.titleRef.textContent = 'Best Sellers Books';
-	startPreloader() 
 	const booksData = response.data;
 	let markupFull='';
 	
@@ -122,10 +124,10 @@ function markupTopBooks(response) {
 		+`</ul><div class="primery-btn-wrapper">
 		<button type="button" class="button primery js-button" name="${category.list_name}">SEE MORE</button>
 		</div></li>`;
-		stopPreloader() 
 		refs.booksBoxRef.insertAdjacentHTML('beforeend', markupFull);
 		refs.buttonListenRef = document.querySelectorAll('.js-button');
 		refs.buttonListenRef.forEach(btn => btn.addEventListener('click', getName));
+		stopPreloader();
 		startOpenModal();
 	}
 };
@@ -150,8 +152,10 @@ for(const book of booksData){
 	sumAllBooks+=markupInner
 	refs.titleRef.textContent = book.list_name;
 }
-refs.booksBoxRef.classList.add("all-books-show")
-refs.booksBoxRef.innerHTML = '<div class="books-box js-preloader"><div class="js-loader"></div></div>' + sumAllBooks;
+refs.booksBoxRef.classList.add("all-books-show");
+
+refs.booksBoxRef.innerHTML = sumAllBooks;
+stopPreloader();
 startOpenModal();
 };
 
