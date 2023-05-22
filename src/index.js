@@ -15,65 +15,6 @@ const refs = {
 refs.categoriesListenRef.addEventListener('click', getName);
 
 
-// preloader
-
-function startPreloader() {
-		refs.preloaderBoxRef.classList.add("preloader")
-		refs.preloaderRef.classList.add("loader")
-};
-function stopPreloader() {
-		refs.preloaderBoxRef.classList.remove("preloader")
-		refs.preloaderRef.classList.remove("loader")
-};
-
-
-async function getData() {
-  try {
-    const response = await axios.get(urlCategories);
-		startPreloader()
-		makeCategories(response);
-  } catch (error) {
-    console.error(error);
-  }
-}
-getData();
-
-// creating markup "all categories"
-function makeCategories(response) {
-	const categoriesArray = response.data;
-	const markupCategor = categoriesArray.map(category =>
-		`<li class="item" name="${category.list_name}" tabindex="0">${category.list_name}
-		</li>`).join('');
-		refs.categoriesListRef.insertAdjacentHTML('beforeend', markupCategor)
-};
-
-// after click we're getting categories name
-function getName(event) {
-  const categoryName = event.target.getAttribute('name');
-	let urlCategory = '';
-	if(categoryName === 'top-books') {
-		urlCategory=urlBooks+categoryName;
-		startPreloader();
-		getBooks(urlCategory)
-		.then(response => {
-			
-			markupTopBooks(response);
-			onModalWindowInform(response);
-		})
-		.catch(error => console.log(error));
-	} else {
-		urlCategory=urlBooks+'category?category='+categoryName;
-		startPreloader();
-		getBooks(urlCategory)
-		.then(response => {
-			setAllBooksAfterClick(response);
-			onModalWindowInform(response);
-		})
-		.catch(error => console.log(error));
-	}
-	setStatusActive(categoryName);
-};
-
 // goten name give us necessary books
 async function getBooks(url) {
   try {
@@ -84,6 +25,7 @@ async function getBooks(url) {
     console.error(error);
   }
 }
+
 // create markup Top Books form all categories 
 getBooks("https://books-backend.p.goit.global/books/top-books")
 		.then(response => {
@@ -92,8 +34,61 @@ getBooks("https://books-backend.p.goit.global/books/top-books")
 		})
 		.catch(error => console.log(error));
 
-refs.booksBoxRef = document.querySelector('.js-list-books');
+getBooks(urlCategories)
+		.then(response => {
+			startPreloader()
+			makeCategories(response);
+		})
+		.catch(error => console.log(error));
 
+
+// preloader
+function startPreloader() {
+		refs.preloaderBoxRef.classList.add("preloader")
+		refs.preloaderRef.classList.add("loader")
+};
+function stopPreloader() {
+		refs.preloaderBoxRef.classList.remove("preloader")
+		refs.preloaderRef.classList.remove("loader")
+};
+
+// after click we're getting categories name
+function getName(event) {
+  const categoryName = event.target.getAttribute('data-name');
+	let urlCategory = '';
+	if(categoryName === 'top-books') {
+		urlCategory=urlBooks+categoryName;
+		startPreloader();
+		getBooks(urlCategory)
+						.then(response => {
+								markupTopBooks(response);
+								onModalWindowInform(response);
+						})
+						.catch(error => console.log(error));
+	} else {
+		urlCategory=urlBooks+'category?category='+categoryName;
+		startPreloader();
+		getBooks(urlCategory)
+							.then(response => {
+									setAllBooksAfterClick(response);
+									onModalWindowInform(response);
+							})
+							.catch(error => console.log(error));
+	}
+	setStatusActive(categoryName);
+};
+
+// creating markup "all categories"
+function makeCategories(response) {
+	const categoriesArray = response.data;
+	const markupCategor = categoriesArray.map(category =>
+		`<li class="item" data-name="${category.list_name}" tabindex="0">${category.list_name}
+		</li>`).join('');
+		refs.categoriesListRef.insertAdjacentHTML('beforeend', markupCategor)
+};
+
+// creating markup "site main page top books"
+refs.booksBoxRef = document.querySelector('.js-list-books');
 
 function markupTopBooks(response) {
 	refs.booksBoxRef.innerHTML = '';
@@ -131,6 +126,7 @@ function markupTopBooks(response) {
 		startOpenModal();
 	}
 };
+
 // markup all books after click on button to Category name
 function setAllBooksAfterClick(response) {
 if(response.request.responseURL.includes('top-books')){
@@ -194,7 +190,6 @@ function makeDropClose(event) {
 		}
 	}
 };
-
 
 // modal window (function onOpenModal start in function markupTopBooks and setAllBooksAfterClick)
 const refsModal = {
