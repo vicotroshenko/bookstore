@@ -6,13 +6,13 @@
 @import "modal.scss";
 @import "modal-enter.scss";
 @import "backtotop.scss";
+@import "mixins.scss";
 
 
 body {
 	font-family: 'DM Sans', sans-serif;
 	box-sizing: border-box;
-	font-size: 14px;
-	line-height: 1.29;
+	@include font(14px, 1.29);
 	letter-spacing: -0.04em;
 	background: $grey-second-bg-color;
 }
@@ -71,8 +71,7 @@ body {
 }
 .title {
 	margin: 0;
-	font-size: 32px;
-	line-height: 1.19;
+	@include font(32px, 1.19);
 	font-weight: 700;
 	@media screen and (min-width: $tablet){
 		font-size: 48px;
@@ -81,8 +80,7 @@ body {
 }
 .subtitle {
 	font-weight: 700;
-	font-size: 28px;
-	line-height: 1.14;
+	@include font(28px, 1.14);
 }
 .subject {
 	margin: 0;

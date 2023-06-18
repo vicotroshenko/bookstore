@@ -1,5 +1,6 @@
 @import "root.scss";
 @import "preloader.scss";
+@import "mixins.scss";
 
 .header {
 	.container {
@@ -8,9 +9,7 @@
 	}
 	.header-wrapper {
 		position: relative;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
+		@include flex(space-between, center);
 		border: 2px solid $black-color;
 		border-radius: 0px 0px 8px 8px;
 		background-color: $bgc-header;
@@ -39,8 +38,7 @@
 			}
 		}
 		.container-buttons {
-			display: flex;
-			align-items: center;
+			@include flex(inherit, center);
 			column-gap: 14px;
 			@media screen and (min-width: $tablet){
 				column-gap: 24px;
@@ -209,9 +207,7 @@
 }
 
 .site-nav {
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		@include flex(center, center);
 		height: 85vh;
 		&.tablet-show {
 			display: none;
@@ -249,10 +245,8 @@
 		}
 	}
 		.overlay{
-			display: flex;
-			align-items: flex-start;
+			@include flex(center, flex-start);
 			flex-direction: column;
-			justify-content: center;
 			row-gap: 16px;
 		}
 }
@@ -348,8 +342,7 @@
 	}
 	span {
 		color: $bgc-header;
-		font-size: 22px;
-		line-height: 1.32;
+		@include font(22px, 1.32);
 		letter-spacing: -0.02em;
 	}
 }

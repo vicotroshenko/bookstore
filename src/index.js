@@ -117,7 +117,7 @@ function markupTopBooks(response) {
 		<ul class="list list-books-wrapper">`
 		+sumAllBooks
 		+`</ul><div class="primery-btn-wrapper">
-		<button type="button" class="button primery js-button" name="${category.list_name}">SEE MORE</button>
+		<button type="button" class="button primery js-button" data-name="${category.list_name}">SEE MORE</button>
 		</div></li>`;
 		refs.booksBoxRef.insertAdjacentHTML('beforeend', markupFull);
 		refs.buttonListenRef = document.querySelectorAll('.js-button');
@@ -133,9 +133,9 @@ if(response.request.responseURL.includes('top-books')){
 	markupTopBooks(response);
 	return;
 };
-refs.booksBoxRef.innerHTML = '<div class="books-box js-preloader" id="preloader"><div class="js-loader"></div></div>';
 let sumAllBooks ='';
 const booksData = response.data;
+console.log(booksData)
 for(const book of booksData){
 	let markupInner  =` <li class="item book-info modal-open" tabindex="0" id="${book._id}">
 	<div class="book-cover">
@@ -310,6 +310,7 @@ function makeMarkupOnModal(id){
 // making local storage data
 const KEY_ADD_BOOKS = "shoplist";
 
+
 refs.btnAddShopList.addEventListener('click', makeLocalData);
 
 function makeLocalData(event) {
@@ -348,6 +349,7 @@ function setLocalData(key, book){
   }
 };
 
+
 function getLocalData(list){
 	try {
 		const savedBooks = localStorage.getItem(list);
@@ -371,11 +373,15 @@ function checkLocalData(id) {
 		refs.btnAddShopList.textContent ='add to shopping list';
 		return;
 	} 
-}
+};
+
+
+
 // changed site theme
 const bodyRef = document.querySelector('body');
 const btnCnangeThemeRef = document.querySelector('.js-theme-checked');
 refs.btnCnangeThemeRef.addEventListener('change', changeTheme);
+
 
 const KEY_THEME ='themeStatus';
 let checkStatus = '';

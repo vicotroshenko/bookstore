@@ -1,4 +1,6 @@
 @import "root.scss";
+@import "mixins.scss";
+
 .charities {
 	width: 100%;
 	.container {
@@ -23,9 +25,8 @@
 			margin-top: 86px;
 		}
 		.title-wrapper {
-			display: flex;
+			@include flex(center, normal);
 			column-gap: 12px;
-			justify-content: center;
 			.emblem-icon {
 				width: 20px;
 				height: 32px;
@@ -34,9 +35,7 @@
 			.charity-row{
 				.link {
 					color: $bgc-header;
-					display: flex;
-					align-items: center;
-					justify-content: flex-start;
+					@include flex(flex-start, center);
 					column-gap: 16px;
 					.charity-img{
 						.img{
@@ -69,8 +68,7 @@
 	margin-bottom: 40px;
 }
 .container-btn {
-	display: flex;
-	justify-content: center;
+	@include flex(center, normal);
 	.btn-support {
 		width: 32px;
 		height: 32px;
@@ -103,6 +101,7 @@
 	}
 	.slider-line {
 		position: relative;
-		transition: top 350ms linear;
+		top: 0;
+		transition: top 250ms linear;
 	}
 }
